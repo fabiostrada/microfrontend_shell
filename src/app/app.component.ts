@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticatorService, Role, RoleType, User } from 'my-authenticator-lib';
+import { AuthenticatorService } from 'my-authenticator-lib';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,10 +8,7 @@ import { AuthenticatorService, Role, RoleType, User } from 'my-authenticator-lib
 export class AppComponent {
   
   constructor(public authenticator: AuthenticatorService) {
-    
-    authenticator.setCurrentUser(
-      new User(1, "fabio", "strada", "fabiostrada77", [new Role(1, RoleType.ADMIN), new Role(2, RoleType.DASHBOARD)])
-    ).subscribe();
+  
   }
 
 }

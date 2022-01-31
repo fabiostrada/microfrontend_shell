@@ -37,6 +37,7 @@ module.exports = {
         
         // For hosts (please adjust)
         remotes: {
+            "login": "http://localhost:2000/remoteEntry.js",
             "admin": "http://localhost:3000/remoteEntry.js",
             "dashboard": "http://localhost:4000/remoteEntry.js",
         },

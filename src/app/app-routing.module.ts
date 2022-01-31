@@ -5,6 +5,16 @@ import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: () =>
+        loadRemoteModule({
+            type: 'module',
+            remoteEntry: 'http://localhost:2000/remoteEntry.js',
+            exposedModule: './Module'
+        })
+        .then(m => m.AppModule)  
+  },  
+  {
     path: 'admin',
     loadChildren: () =>
         loadRemoteModule({
