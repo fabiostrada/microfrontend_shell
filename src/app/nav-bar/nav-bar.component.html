@@ -1,0 +1,35 @@
+<mat-toolbar>
+    <button mat-icon-button 
+            class="example-icon" 
+            aria-label="Example icon-button with menu icon"
+            routerLink="/">
+        <mat-icon>home</mat-icon>
+    </button>
+    <span class="example-spacer"></span>   
+    <ng-container *ngIf="(this.authenticatorService.isAdmin() | async)">
+        <button mat-button routerLink="/admin" aria-label="Administrator" role="button" class="button-nav-bar">
+            Administrator
+        </button>
+        <button mat-button routerLink="/admin/account" aria-label="Account" role="button" class="button-nav-bar">
+            Account
+        </button>        
+    </ng-container> 
+    <ng-container *ngIf="(this.authenticatorService.isDashboard() | async)">
+        <button mat-button routerLink="/dashboard" aria-label="Dashboard" role="button" class="button-nav-bar">
+            Dashboard
+        </button>
+    </ng-container> 
+    <ng-container *ngIf="!(this.authenticatorService.currentUser() | async); else common">
+        <button mat-button routerLink="/login" aria-label="Login" role="button" class="button-nav-bar">
+            Login
+        </button>
+        <button mat-button routerLink="/registration" aria-label="Registration" role="button" class="button-nav-bar">
+            Registration
+        </button>
+    </ng-container>
+    <ng-template #common>        
+        <button mat-button aria-label="Logout" role="button" (click)="logout()" class="button-nav-bar">
+            Logout
+        </button>        
+    </ng-template>    
+</mat-toolbar>
