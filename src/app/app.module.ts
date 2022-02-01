@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthenticatorModule } from 'my-authenticator-lib';
 
@@ -23,4 +23,4 @@ import { NotAuthorizedComponent } from './common-page/not-authorized/not-authori
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

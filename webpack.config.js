@@ -1,7 +1,9 @@
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+//const ExternalTemplateRemotesPlugin = require("./external.template.remote.plugin");
 const mf = require("@angular-architects/module-federation/webpack");
 const path = require("path");
 const share = mf.share;
+//const { appConfig } = require("./module.config");
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
@@ -36,11 +38,12 @@ module.exports = {
         // },        
         
         // For hosts (please adjust)
+        /*
         remotes: {
-            "login": "http://localhost:2000/remoteEntry.js",
-            "admin": "http://localhost:3000/remoteEntry.js",
-            "dashboard": "http://localhost:4000/remoteEntry.js",
-        },
+            "login": "http://localhost:" + appConfig.login.port  + "/remoteEntry.js?" + randomString(10),
+            "admin": "http://localhost:" + appConfig.admin.port + "/remoteEntry.js?" + randomString(10),
+            "dashboard": "http://localhost:" + appConfig.dashboard.port + "/remoteEntry.js?" + randomString(10),
+        },*/
 
         shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
@@ -53,6 +56,18 @@ module.exports = {
         })
         
     }),
+    //new ExternalTemplateRemotesPlugin(),
     sharedMappings.getPlugin()
   ],
 };
+
+function randomString(length) {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * 
+charactersLength));
+ }
+ return result;
+}
