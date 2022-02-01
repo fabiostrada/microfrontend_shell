@@ -3,12 +3,12 @@ export class AppConfig {
     public protocol!: string;
     public remoteFile!: string;
     public login!: {
-        port: number;
+        port: number        
     };
     public dashboard!: {
-        port: number;
+        port: number        
     };    
     public admin!: {
-        port: number;
-    };   
+        port: number        
+    };
 }

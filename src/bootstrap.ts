@@ -17,7 +17,8 @@ fetch(`/assets/config.json?v=${environment.appVersion}`)
       enableProdMode();
     }
     
-    window.appConfig = config || {};    
+    window.appConfig = config || {};   
+    console.log(window.appConfig); 
 
     platformBrowserDynamic([
       { provide: AppConfig, useValue: config }        
