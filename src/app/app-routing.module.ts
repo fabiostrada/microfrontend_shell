@@ -3,56 +3,58 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RoleType } from 'my-authenticator-lib';
 import { NotAuthorizedComponent } from './common-page/not-authorized/not-authorized.component';
+import { RoutingConfig } from './config/routing-config';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthorizationGuard } from './guards/authorization.guard';
 
-@NgModule({
-  imports: [RouterModule.forRoot([
-    {
-      path: 'login',      
-      loadChildren: () =>
-          loadRemoteModule({
-              type: 'module',
-              remoteEntry: buildUrlForRouter(window.appConfig.login.port),
-              exposedModule: './Module'
-          })
-          .then(m => m.AppModule)  
-    },  
-    {
-      path: 'admin',
-      loadChildren: () =>
-          loadRemoteModule({
-              type: 'module',
-              remoteEntry: buildUrlForRouter(window.appConfig.admin.port),
-              exposedModule: './Module'
-          })
-          .then(m => m.AppModule),
-      canLoad: [AuthenticationGuard, AuthorizationGuard],
-      canActivate: [AuthenticationGuard, AuthorizationGuard], 
-      data:{
-        roles:[RoleType.ADMIN]  
-      }
-    },
-    {
-      path: 'dashboard',
-      loadChildren: () =>
-          loadRemoteModule({
-              type: 'module',
-              remoteEntry: buildUrlForRouter(window.appConfig.dashboard.port),
-              exposedModule: './Module'
-          })
-          .then(m => m.AppModule),
-      canLoad: [AuthenticationGuard, AuthorizationGuard],
-      canActivate: [AuthenticationGuard, AuthorizationGuard],
-      data:{
-        roles:[RoleType.DASHBOARD]  
-      }   
-    },
-    {
-      path: 'not-authorized',
-      component: NotAuthorizedComponent
+const router = [
+  {
+    path: RoutingConfig.microservices.login,      
+    loadChildren: () =>
+        loadRemoteModule({
+            type: 'module',
+            remoteEntry: buildUrlForRouter(window.appConfig.microservices.login.port),
+            exposedModule: './Module'
+        })
+        .then(m => m.AppModule)  
+  },  
+  {
+    path: RoutingConfig.microservices.admin,
+    loadChildren: () =>
+        loadRemoteModule({
+            type: 'module',
+            remoteEntry: buildUrlForRouter(window.appConfig.microservices.admin.port),
+            exposedModule: './Module'
+        })
+        .then(m => m.AppModule),
+    canLoad: [AuthenticationGuard, AuthorizationGuard],
+    canActivate: [AuthenticationGuard, AuthorizationGuard], 
+    data:{
+      roles:[RoleType.ADMIN]  
     }
-  ])],
+  },
+  {
+    path: RoutingConfig.microservices.dashboard,
+    loadChildren: () =>
+        loadRemoteModule({
+            type: 'module',
+            remoteEntry: buildUrlForRouter(window.appConfig.microservices.dashboard.port),
+            exposedModule: './Module'
+        })
+        .then(m => m.AppModule),
+    canLoad: [AuthenticationGuard, AuthorizationGuard],
+    canActivate: [AuthenticationGuard, AuthorizationGuard],
+    data:{
+      roles:[RoleType.DASHBOARD]  
+    }   
+  },
+  {
+    path: RoutingConfig.commonpage.not_authorized,
+    component: NotAuthorizedComponent
+  }
+];
+@NgModule({
+  imports: [RouterModule.forRoot(router)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 
