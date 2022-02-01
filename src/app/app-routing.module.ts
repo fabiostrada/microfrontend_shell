@@ -1,6 +1,7 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
@@ -21,7 +22,9 @@ const routes: Routes = [
             remoteEntry: 'http://localhost:3000/remoteEntry.js',
             exposedModule: './Module'
         })
-        .then(m => m.AppModule)  
+        .then(m => m.AppModule),
+    canLoad: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard] 
   },
   {
     path: 'dashboard',
@@ -31,7 +34,9 @@ const routes: Routes = [
             remoteEntry: 'http://localhost:4000/remoteEntry.js',
             exposedModule: './Module'
         })
-        .then(m => m.AppModule)  
+        .then(m => m.AppModule),
+    canLoad: [AuthenticationGuard],
+    canActivate: [AuthenticationGuard]   
   }
 ];
 
