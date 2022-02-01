@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Architecture
 
 About the architecture, the project developed using [Module Federation Plugin](https://webpack.js.org/concepts/module-federation/).
-The scell project contains the following microfrontends:
+The shell project contains the following microfrontends:
 
 - Login Application
 - Dashboard Application
