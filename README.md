@@ -1,10 +1,20 @@
 # Shell
 
+This is a container for microfrontends application (login, admin, dashboard). 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+
+## Architecture
+
+About the architecture, the project developed using [Module Federation Plugin](https://webpack.js.org/concepts/module-federation/).
+The shell project contains the following microfrontends:
+
+- Login Application
+- Dashboard Application
+- Admin Application
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:5000/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
