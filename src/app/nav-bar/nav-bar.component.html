@@ -20,7 +20,7 @@
         </button>
     </ng-container> 
     <ng-container *ngIf="!(this.authenticatorService.currentUser() | async); else common">
-        <button mat-button routerLink="/login" aria-label="Login" role="button" class="button-nav-bar">
+        <button mat-button routerLink="/login/login-page" aria-label="Login" role="button" class="button-nav-bar">
             Login
         </button>
         <button mat-button routerLink="/login/registration" aria-label="Registration" role="button" class="button-nav-bar">
