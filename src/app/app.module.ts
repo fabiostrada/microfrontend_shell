@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NotAuthorizedComponent } from './common-page/not-authorized/not-authorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     BrowserModule,

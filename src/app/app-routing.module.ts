@@ -1,7 +1,10 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RoleType } from 'my-authenticator-lib';
+import { NotAuthorizedComponent } from './common-page/not-authorized/not-authorized.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import { AuthorizationGuard } from './guards/authorization.guard';
 
 const routes: Routes = [
   {
@@ -23,8 +26,11 @@ const routes: Routes = [
             exposedModule: './Module'
         })
         .then(m => m.AppModule),
-    canLoad: [AuthenticationGuard],
-    canActivate: [AuthenticationGuard] 
+    canLoad: [AuthenticationGuard, AuthorizationGuard],
+    canActivate: [AuthenticationGuard, AuthorizationGuard], 
+    data:{
+      roles:[RoleType.ADMIN]  
+    }
   },
   {
     path: 'dashboard',
@@ -35,8 +41,15 @@ const routes: Routes = [
             exposedModule: './Module'
         })
         .then(m => m.AppModule),
-    canLoad: [AuthenticationGuard],
-    canActivate: [AuthenticationGuard]   
+    canLoad: [AuthenticationGuard, AuthorizationGuard],
+    canActivate: [AuthenticationGuard, AuthorizationGuard],
+    data:{
+      roles:[RoleType.DASHBOARD]  
+    }   
+  },
+  {
+    path: 'not-authorized',
+    component: NotAuthorizedComponent
   }
 ];
 
