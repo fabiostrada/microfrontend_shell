@@ -6,6 +6,7 @@ export class RoutingConfig {
     };
 
     public static commonpage = {
-        not_authorized: "not-authorized"
+        not_authorized: "not-authorized",
+        only_one: "only-one"
     }
 }

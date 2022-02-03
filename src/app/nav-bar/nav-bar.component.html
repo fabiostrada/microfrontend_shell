@@ -6,6 +6,9 @@
         <mat-icon>home</mat-icon>
     </button>
     <span class="example-spacer"></span>   
+    <button mat-button routerLink="{{routingConfig.commonpage.only_one}}" aria-label="Administrator" role="button" class="button-nav-bar">
+        OnlyOne
+    </button>
     <ng-container *ngIf="(this.authenticatorService.isAdmin() | async)">
         <button mat-button routerLink="/admin" aria-label="Administrator" role="button" class="button-nav-bar">
             Administrator

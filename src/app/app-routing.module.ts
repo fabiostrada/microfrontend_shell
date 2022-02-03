@@ -3,9 +3,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RoleType } from 'my-authenticator-lib';
 import { NotAuthorizedComponent } from './common-page/not-authorized/not-authorized.component';
+import { OnlyOneComponent } from './common-page/only-one/only-one.component';
 import { RoutingConfig } from './config/routing-config';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { AuthorizationGuard } from './guards/authorization.guard';
+import { OnlyOneGuard } from './guards/only-one.guard';
 
 const router = [
   {
@@ -51,6 +53,12 @@ const router = [
   {
     path: RoutingConfig.commonpage.not_authorized,
     component: NotAuthorizedComponent
+  },
+  {
+    path: RoutingConfig.commonpage.only_one,
+    component: OnlyOneComponent,
+    canActivate: [OnlyOneGuard],
+    canDeactivate: [OnlyOneGuard]
   }
 ];
 @NgModule({

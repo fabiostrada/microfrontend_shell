@@ -13,7 +13,8 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "shell",
-    publicPath: "auto"
+    publicPath: "auto",
+    scriptType: 'text/javascript'
   },
   optimization: {
     runtimeChunk: false
