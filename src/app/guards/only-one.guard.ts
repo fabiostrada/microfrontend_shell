@@ -12,9 +12,7 @@ export class OnlyOneGuard implements CanActivate, CanDeactivate<unknown> {
 
   public canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-    console.log('Entrato in Only one')
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {    
     let isOnlyOneOpened: boolean = this.routingService.onlyOneIsAlreadyOpened();
     if (isOnlyOneOpened) {
       return false;
@@ -27,9 +25,7 @@ export class OnlyOneGuard implements CanActivate, CanDeactivate<unknown> {
     component: unknown,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    console.log('Uscito da Only one')
+    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {    
     this.routingService.closeOnlyOne();
     return true;
   }

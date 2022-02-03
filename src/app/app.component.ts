@@ -9,15 +9,12 @@ import { RoutingService } from './services/routing.service';
 export class AppComponent {
  
   constructor(public authenticator: AuthenticatorService,
-              private routingService: RoutingService) {
-  
+              private routingService: RoutingService) {  
   }
 
   @HostListener('window:beforeunload', ['$event'])
-  beforeunloadHandler(event: any) {
-      console.log(event);
+  beforeunloadHandler(event: any) {      
       this.routingService.closeOnlyOne();
-      debugger;
   }
   
 }
