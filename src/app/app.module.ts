@@ -1,6 +1,6 @@
-import { InjectionToken, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AuthenticatorModule } from 'my-authenticator-lib';
+import { AuthenticatorModule, StateService } from 'my-authenticator-lib';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,7 +22,8 @@ import { OnlyOneComponent } from './common-page/only-one/only-one.component';
     AuthenticatorModule,
     ...MaterialModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

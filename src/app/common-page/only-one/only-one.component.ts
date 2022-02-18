@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateService } from 'my-authenticator-lib';
 
 @Component({
   selector: 'app-only-one',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnlyOneComponent implements OnInit {
 
-  constructor() { }
+  public property1!: string;
+
+  constructor(private stateService: StateService) { }
 
   ngOnInit(): void {
+    this.property1 = this.stateService.getProperty1();
+    console.log(this.stateService.getProperty1());
   }
 
 }

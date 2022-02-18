@@ -1,5 +1,6 @@
+
 import { Component, HostListener } from '@angular/core';
-import { AuthenticatorService } from 'my-authenticator-lib';
+import { AuthenticatorService, StateService } from 'my-authenticator-lib';
 import { RoutingService } from './services/routing.service';
 @Component({
   selector: 'app-root',
@@ -8,12 +9,16 @@ import { RoutingService } from './services/routing.service';
 })
 export class AppComponent {
  
+  public property1!: string;
+
   constructor(public authenticator: AuthenticatorService,
-              private routingService: RoutingService) {  
+              private routingService: RoutingService,
+              private stateService: StateService) {  
   }
 
   @HostListener('window:beforeunload', ['$event'])
-  beforeunloadHandler(event: any) {      
+  beforeunloadHandler(event: any) {   
+    this.stateService.getProperty1();   
       this.routingService.closeOnlyOne();
   }
   
