@@ -51,7 +51,7 @@ module.exports = {
           "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' }, 
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "my-authenticator-lib": { eager: true, singleton: true, requiredVersion: 'auto' },
+          //"my-authenticator-lib": { eager: true, singleton: true, requiredVersion: 'auto' },
           ...sharedMappings.getDescriptors()
         })
         
